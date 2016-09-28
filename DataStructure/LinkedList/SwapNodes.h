@@ -1,4 +1,4 @@
-#include "../Graph/OLD/GRAPH_OLD.h"
+#include "../../Graph/OLD/GRAPH_OLD.h"
 
 void SwapeNodes() {
     /*int n;

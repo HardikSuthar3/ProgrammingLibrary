@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 
@@ -59,6 +60,17 @@ void PrintGraph() {
 
 }
 
+void ClearGraph() {
+    delete[]par;
+    delete[] used;
+    for (int i = 0; i < V; i++) {
+        G[i].clear();
+
+    }
+    edges.clear();
+    W.clear();
+    V = E = root = -1;
+}
 
 void TransposeGraph() {
     for (int i = 0; i < V; i++) {
@@ -78,6 +90,7 @@ int Find(int x) {
         return x;
     return par[x] = Find(par[x]);
 }
+
 void Union(int x, int y) {
     int xp, yp;
     xp = Find(x);
@@ -87,7 +100,7 @@ void Union(int x, int y) {
 
 
 // Operations
-vector<int> DFS(int v) {
+vector<int> dfs(int v) {
     static vector<int> path;
     if (used[v]) {
         return path;
@@ -102,13 +115,13 @@ vector<int> DFS(int v) {
 
         int adjV = x ^y;
         if (!used[adjV]) {
-            DFS(adjV);
+            dfs(adjV);
         }
     }
     return path;
 }
 
-vector<int> BFS(int r) {
+vector<int> bfs(int r) {
 
     queue<int> q;
     q.push(r);
@@ -133,7 +146,7 @@ vector<int> BFS(int r) {
     return res;
 }
 
-vector<int> BFSPath(int r, int to) {
+vector<int> shortestPathBFS(int r, int to) {
     queue<int> q;
     q.push(r);
 
@@ -172,10 +185,9 @@ vector<int> BFSPath(int r, int to) {
 }
 
 
-stack<int> _TOPUtil(int v) {
-    static stack<int> topst;
+void topologicalDfs(int v, vector<int> &topst) {
     if (used[v]) {
-        return topst;
+        return;
     }
     used[v] = true;
 
@@ -187,29 +199,24 @@ stack<int> _TOPUtil(int v) {
         int adjV = x ^y;
 
         if (!used[adjV]) {
-            _TOPUtil(adjV);
+            topologicalDfs(adjV, topst);
         }
     }
-    topst.push(v);
+    topst.push_back(v);
 
-    return topst;
+    return;
 }
-
-vector<int> TOPSort(int r) {
-    stack<int> topst = _TOPUtil(r);
+vector<int> topologicalSort(int r) {
+    vector<int> topOrder;
     for (int i = 0; i < V; i++) {
         if (used[i] == false) {
-            topst = _TOPUtil(i);
+            topologicalDfs(i, topOrder);
         }
     }
-
-    vector<int> op;
-    while (!topst.empty()) {
-        op.push_back(topst.top());
-        topst.pop();
-    }
-    return op;
+    reverse(topOrder.begin(), topOrder.end());
+    return topOrder;
 }
+
 
 bool isCycle() {
     UFinit(V);
@@ -247,7 +254,7 @@ bool isMColor(int m, int v) {
 
 // Minimum Spanning Tree
 
-vector<int> PrimMst(int r) {
+vector<int> primMst(int r) {
     vector<int> dist(V);
     fill(dist.begin(), dist.end(), INT_MAX);
     dist[r] = 0;
@@ -283,7 +290,7 @@ vector<int> PrimMst(int r) {
     return dist;
 }
 
-void KrushkalsMst() {
+void krushkalsMst() {
     function<bool(pair<int, float> &, pair<int, float> &)>
             compare([](pair<int, float> &x, pair<int, float> &y) -> bool { return (x.second < y.second); });
 
@@ -323,7 +330,7 @@ void KrushkalsMst() {
 
 // Shortest Path Algorithms
 
-vector<float> Dijkastra(int src) {
+vector<float> dijkastra(int src) {
     vector<int> q;
 
     vector<float> dist(V);
@@ -355,7 +362,7 @@ vector<float> Dijkastra(int src) {
 
 }
 
-vector<float> BellmanFord(int src) {
+vector<float> bellmanFord(int src) {
     vector<float> dist(V);
     fill(dist.begin(), dist.end(), INT_MAX);
     dist[src] = 0;
@@ -375,7 +382,7 @@ vector<float> BellmanFord(int src) {
 
 
 //All Pair shortest Path
-float **FloydWarshall() {
+float **floydWarshall() {
     float **dist = new float *[V];
     for (int i = 0; i < V; i++) {
         dist[i] = new float[V];
@@ -403,15 +410,15 @@ float **FloydWarshall() {
 }
 
 
-vector<int> ConnectedComponents() {
-    vector<int> top = TOPSort(0);
+vector<int> connectedComponents() {
+    vector<int> top = topologicalSort(0);
     TransposeGraph();
     fill(used, used + V, false);
     vector<int> comp;
     for (int i = 0; i < V; i++) {
         int u = top[i];
         if (used[u] == false) {
-            DFS(u);
+            dfs(u);
             comp.push_back(u);
         }
     }
@@ -419,7 +426,7 @@ vector<int> ConnectedComponents() {
 }
 
 
-void EularPath() {
+void eularPath() {
     bool flag = true;
     // Check each vertice is of even degree
     vector<int> vertice;
@@ -438,7 +445,7 @@ void EularPath() {
     }
 
     int u = vertice.front();
-    DFS(u);
+    dfs(u);
     int c = 0;
     for (int i = 0; i < vertice.size(); i++) {
         u = vertice[i];
@@ -454,3 +461,73 @@ void EularPath() {
 }
 
 
+
+// Maximum Flow Graph
+
+int **graph2Mat() {
+    int **mat = new int *[V];
+    for (int i = 0; i < V; i++) {
+        mat[i] = new int[V];
+        fill(mat[i], mat[i] + V, 0);
+    }
+
+    for (int i = 0; i < edges.size(); ++i) {
+        pair<int, int> p = edges.at(i);
+        mat[p.first][p.second] = W[i].second;
+    }
+    return mat;
+}
+
+bool bfsMaxFlow(int **res, int s, int t) {
+    par = new int[V];
+    fill(par, par + V, -1);
+    used = new bool[V];
+    fill(used, used + V, false);
+    used[s] = true;
+    queue<int> q;
+    q.push(s);
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        for (int i = 0; i < V; i++) {
+            if (i == u)
+                continue;
+            if (used[i] == false && res[u][i] > 0) {
+                par[i] = u;
+                used[i] = true;
+                q.push(i);
+            }
+        }
+    }
+    return (used[t] == true);
+}
+
+int maxFlow() {
+    int **mat = graph2Mat();
+    int **res = new int *[V];
+    for (int i = 0; i < V; i++) {
+        res[i] = new int[V];
+        for (int j = 0; j < V; j++) {
+            res[i][j] = mat[i][j];
+        }
+    }
+
+    int max_flow = 0;
+    int s = 0, t = 5;
+
+    while (bfsMaxFlow(res, s, t)) {
+        int mincost = INT_MAX;
+        for (int v = t; v != s; v = par[v]) {
+            int u = par[v];
+            mincost = min(mincost, res[u][v]);
+        }
+        max_flow += mincost;
+        for (int v = t; v != s; v = par[v]) {
+            int u = par[v];
+            res[u][v] -= mincost;
+            res[v][u] += mincost;
+        }
+    }
+
+    return max_flow;
+}
