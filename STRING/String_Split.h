@@ -2,10 +2,7 @@
 // Created by Hardik on 02/07/16.
 //
 
-#include <vector>
-#include <string>
-#include <sstream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 

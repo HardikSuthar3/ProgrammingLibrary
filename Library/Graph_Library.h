@@ -12,6 +12,8 @@ int *par;
 bool *used;
 // End Structure
 
+// Common Function
+
 void UFinit(int n) {
     for (int i = 0; i <= n; i++) {
         par[i] = i;
@@ -97,6 +99,9 @@ void Union(int x, int y) {
     yp = Find(y);
     par[yp] = xp;
 }
+
+// Common Function End
+
 
 
 // Operations

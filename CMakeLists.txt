@@ -3,40 +3,29 @@ project(ProgrammingLibrary)
 
 
 
-INCLUDE_DIRECTORIES(DP
-        BinaryTree
-        GreedyAlgo
+INCLUDE_DIRECTORIES(Library/DP
+        DataStructure/BinaryTree
+        Greedy
         DataStructure/LinkedList
         STRING
         )
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-#set(SOURCE_FILES main.cpp DP/Matrix2D.h
-#        DP/MinimumCostPolygonTringulation.h
-#        DP/MinimumInitialPointsToReachDestination.h DP/CountOfSumWhoseSumIsN.h
-#        DP/CountNumberOfNonDecreasingDigits.h LinkedList/SwapNodes.h TEMPLATE.h Graph/OLD/GRAPH_OLD.h
-#        Graph/GRAPH.h Graph/OLD/GraphTraversal.h Graph/GraphOperations.h Graph_Nirav_Template.h Graph/GraphChanged.h BinaryTree/BTree.h DP/DP_Problem_Library.h)
-
-#add_executable(ProblemsImplementation ${SOURCE_FILES}
-#        DP/Matrix2D.h
-#        DP/MinimumCostPolygonTringulation.h
-#        DP/MinimumInitialPointsToReachDestination.h DP/CountOfSumWhoseSumIsN.h
-#        DP/CountNumberOfNonDecreasingDigits.h LinkedList/SwapNodes.h TEMPLATE.h Graph/OLD/GRAPH_OLD.h
-#        Graph/GRAPH.h Graph/OLD/GraphTraversal.h Graph/GraphOperations.h Graph/Graph_Nirav_Template_backup.h Graph/GraphChanged.h BinaryTree/BTree.h DP/DP_Problem_Library.h)
-add_library(GreedyAlgo GreedyAlgo/ActivitySelection.cpp)
 
 set(SOURCE_FILES main.cpp
-        DP/DP_Problem_Library.h
-        Graph/Graph_Library.h
+        Library/DP_Problem_Library.h
+        Library/Graph_Library.h
         Library/TEMPLATE.h
         Library/Utility.h
-        )
+        Library/Graph_Structure.h
+        Library/GraphLibrary/Graph_Structure.h Library/GraphLibrary/DFS.h Library/GraphLibrary/BFS.h Library/GraphLibrary/Shortest_Path_Using_BFS.h Library/GraphLibrary/Topological_Ordering.h Library/GraphLibrary/DetectCycle_Using_Union_Find.h Library/GraphLibrary/M_Coloring_Problem.h Library/GraphLibrary/Minimum_Spanning_Tree.h Library/GraphLibrary/Shortest_Path_Algorithms.h Library/GraphLibrary/Strongly_Connected_Components.h "Library/GraphLibrary/Detect_Eular_Path.h" Library/GraphLibrary/Maximim_Flow.h STRING/String_Split.h)
 
 add_executable(ProgrammingLibrary ${SOURCE_FILES}
-        DP/DP_Problem_Library.h
-        Graph/Graph_Library.h
+        Library/DP_Problem_Library.h
+        Library/Graph_Library.h
         Library/TEMPLATE.h
         Library/Utility.h
-        )
+        Library/Graph_Structure.h
+        Library/GraphLibrary/Graph_Structure.h Library/GraphLibrary/DFS.h Library/GraphLibrary/BFS.h Library/GraphLibrary/Shortest_Path_Using_BFS.h Library/GraphLibrary/Topological_Ordering.h Library/GraphLibrary/DetectCycle_Using_Union_Find.h Library/GraphLibrary/M_Coloring_Problem.h Library/GraphLibrary/Minimum_Spanning_Tree.h Library/GraphLibrary/Shortest_Path_Algorithms.h Library/GraphLibrary/Strongly_Connected_Components.h "Library/GraphLibrary/Detect_Eular_Path.h" Library/GraphLibrary/Maximim_Flow.h STRING/String_Split.h)
 
 #TEMPLATE.h GRAPH.h
