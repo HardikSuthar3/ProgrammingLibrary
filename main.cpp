@@ -2,15 +2,15 @@
     auto buff = std::cin.rdbuf();
     std::cin.rdbuf(in.rdbuf());*/
 #include<bits/stdc++.h>
-#include "DP/BinaryStringWithoutConsicutiveOnes.h"
+
 using namespace std;
 
 int main() {
 
-//    freopen("/HSData/Data/IITM/workspace/CLion/ProblemsImplementation/input.txt", "r", stdin);
-//    freopen("/HSData/Data/IITM/workspace/CLion/ProblemsImplementation/output.txt", "w", stdout);
+//    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
+//    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/output.txt", "w", stdout);
 
-    BinaryStringWithoutConsicutiveOnes();
+
 
     return 0;
 

@@ -3,10 +3,13 @@ project(ProgrammingLibrary)
 
 
 
-INCLUDE_DIRECTORIES(Library/DP
+INCLUDE_DIRECTORIES(
+        Library
+        Library/DP
+        Library/GraphLibrary
         DataStructure/BinaryTree
-        Greedy
         DataStructure/LinkedList
+        Greedy
         STRING
         )
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
@@ -28,4 +31,3 @@ add_executable(ProgrammingLibrary ${SOURCE_FILES}
         Library/Graph_Structure.h
         Library/GraphLibrary/Graph_Structure.h Library/GraphLibrary/DFS.h Library/GraphLibrary/BFS.h Library/GraphLibrary/Shortest_Path_Using_BFS.h Library/GraphLibrary/Topological_Ordering.h Library/GraphLibrary/DetectCycle_Using_Union_Find.h Library/GraphLibrary/M_Coloring_Problem.h Library/GraphLibrary/Minimum_Spanning_Tree.h Library/GraphLibrary/Shortest_Path_Algorithms.h Library/GraphLibrary/Strongly_Connected_Components.h "Library/GraphLibrary/Detect_Eular_Path.h" Library/GraphLibrary/Maximim_Flow.h STRING/String_Split.h)
 
-#TEMPLATE.h GRAPH.h
