@@ -2,7 +2,12 @@ cmake_minimum_required(VERSION 3.5)
 project(ProgrammingLibrary)
 
 
-INCLUDE_DIRECTORIES(DP)
+INCLUDE_DIRECTORIES(DP
+        BinaryTree
+        GreedyAlgo
+        LinkedList
+        STRING
+        )
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 #set(SOURCE_FILES main.cpp DP/Matrix2D.h
