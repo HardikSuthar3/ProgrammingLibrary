@@ -21,7 +21,7 @@ set(SOURCE_FILES main.cpp
         Library/TEMPLATE.h
         Library/Utility.h
         Library/Graph_Structure.h
-        Library/GraphLibrary/Graph_Structure.h Library/GraphLibrary/DFS.h Library/GraphLibrary/BFS.h Library/GraphLibrary/Shortest_Path_Using_BFS.h Library/GraphLibrary/Topological_Ordering.h Library/GraphLibrary/DetectCycle_Using_Union_Find.h Library/GraphLibrary/M_Coloring_Problem.h Library/GraphLibrary/Minimum_Spanning_Tree.h Library/GraphLibrary/Shortest_Path_Algorithms.h Library/GraphLibrary/Strongly_Connected_Components.h "Library/GraphLibrary/Detect_Eular_Path.h" Library/GraphLibrary/Maximim_Flow.h STRING/String_Split.h)
+        Library/GraphLibrary/Graph_Structure.h Library/GraphLibrary/DFS.h Library/GraphLibrary/BFS.h Library/GraphLibrary/Shortest_Path_Using_BFS.h Library/GraphLibrary/Topological_Ordering.h Library/GraphLibrary/DetectCycle_Using_Union_Find.h Library/GraphLibrary/M_Coloring_Problem.h Library/GraphLibrary/Minimum_Spanning_Tree.h Library/GraphLibrary/Shortest_Path_Algorithms.h Library/GraphLibrary/Strongly_Connected_Components.h "Library/GraphLibrary/Detect_Eular_Path.h" Library/GraphLibrary/Maximim_Flow.h STRING/String_Split.h DataStructure/BinaryTree/BinaryTreeStructure.h)
 
 add_executable(ProgrammingLibrary ${SOURCE_FILES}
         Library/DP_Problem_Library.h
@@ -29,5 +29,5 @@ add_executable(ProgrammingLibrary ${SOURCE_FILES}
         Library/TEMPLATE.h
         Library/Utility.h
         Library/Graph_Structure.h
-        Library/GraphLibrary/Graph_Structure.h Library/GraphLibrary/DFS.h Library/GraphLibrary/BFS.h Library/GraphLibrary/Shortest_Path_Using_BFS.h Library/GraphLibrary/Topological_Ordering.h Library/GraphLibrary/DetectCycle_Using_Union_Find.h Library/GraphLibrary/M_Coloring_Problem.h Library/GraphLibrary/Minimum_Spanning_Tree.h Library/GraphLibrary/Shortest_Path_Algorithms.h Library/GraphLibrary/Strongly_Connected_Components.h "Library/GraphLibrary/Detect_Eular_Path.h" Library/GraphLibrary/Maximim_Flow.h STRING/String_Split.h)
+        Library/GraphLibrary/Graph_Structure.h Library/GraphLibrary/DFS.h Library/GraphLibrary/BFS.h Library/GraphLibrary/Shortest_Path_Using_BFS.h Library/GraphLibrary/Topological_Ordering.h Library/GraphLibrary/DetectCycle_Using_Union_Find.h Library/GraphLibrary/M_Coloring_Problem.h Library/GraphLibrary/Minimum_Spanning_Tree.h Library/GraphLibrary/Shortest_Path_Algorithms.h Library/GraphLibrary/Strongly_Connected_Components.h "Library/GraphLibrary/Detect_Eular_Path.h" Library/GraphLibrary/Maximim_Flow.h STRING/String_Split.h DataStructure/BinaryTree/BinaryTreeStructure.h)
 

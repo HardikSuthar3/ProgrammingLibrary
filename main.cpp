@@ -7,8 +7,23 @@ using namespace std;
 
 int main() {
 
-//    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
-//    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/output.txt", "w", stdout);
+    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
+//    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/output.txt", "w", stdout);{
+
+
+
+
+    // Input Begin
+
+    // Input End
+
+
+
+
+    // Sol Begin
+
+    // Sol End
+
 
 
 

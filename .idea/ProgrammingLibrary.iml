@@ -2,24 +2,25 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/DataStructure/BinaryTree/BinaryTreeStructure.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/STRING/String_Split.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/TEMPLATE.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/DP_Problem_Library.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/Graph_Library.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/Utility.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Topological_Ordering.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/BFS.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Shortest_Path_Using_BFS.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/DetectCycle_Using_Union_Find.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Maximim_Flow.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Minimum_Spanning_Tree.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/M_Coloring_Problem.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/BFS.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Detect_Eular_Path.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Strongly_Connected_Components.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/DFS.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Graph_Structure.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Topological_Ordering.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Shortest_Path_Algorithms.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Library/GraphLibrary/Detect_Eular_Path.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Library/Graph_Structure.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
