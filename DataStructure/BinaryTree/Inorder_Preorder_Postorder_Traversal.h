@@ -1,9 +1,7 @@
 #include <BinaryTreeStructure.h>
 
-vector<int> in;
-vector<int> pre;
-vector<int> post;
 
+vector<int> pre;
 void preorder(Node *r) {
     if (r == nullptr)
         return;
@@ -12,7 +10,7 @@ void preorder(Node *r) {
     inorder(r->right);
 }
 
-
+vector<int> in;
 void inorder(Node *r) {
     if (r == nullptr)
         return;
@@ -21,6 +19,8 @@ void inorder(Node *r) {
     inorder(r->right);
 }
 
+
+vector<int> post;
 void postorder(Node *r) {
     if (r == nullptr)
         return;

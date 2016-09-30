@@ -5,6 +5,8 @@
 
 using namespace std;
 
+
+
 int main() {
 
     freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
@@ -15,9 +17,8 @@ int main() {
 
     // Input Begin
 
+
     // Input End
-
-
 
 
     // Sol Begin
