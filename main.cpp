@@ -8,13 +8,9 @@ using namespace std;
 int main() {
 
 //    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
-//    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/output.txt", "w", stdout);
-    int n;
-    vector<int> a;
-
-    for (int i = 1; i <= 20000; ++i) {
-        a.push_back(i);
-
+    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/output.txt", "w", stdout);
+    int x;
+    for (int i = 0; i < 20; i++) {
+        cout << i++ << " ";
     }
-    cout << a.size();
 }
