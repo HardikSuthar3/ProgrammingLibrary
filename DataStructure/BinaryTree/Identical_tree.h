@@ -1,4 +1,4 @@
-#include <BinaryTreeStructure.h>
+#include "BinaryTreeStructure.h"
 
 bool isIdentical(Node *first, Node *second) {
     if (first == nullptr && second == nullptr)

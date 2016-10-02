@@ -14,13 +14,23 @@ vector<float> dijkastra(int src) {
     // Declare Comparator
     function<bool(int &, int &)> comparator(
             [&](int &a, int &b) -> bool {
-                return dist[a] < dist[b];
+                return dist[a] > dist[b];
             }
     );
+
+
+    bool flag = false;
     while (!q.empty()) {
+/*
         auto it = min_element(q.begin(), q.end(), comparator);
         int u = *it;
         q.erase(it);
+*/
+
+        pop_heap(q.begin(), q.end(), comparator);
+        int u = q.back();
+        q.pop_back();
+
         used[u] = true;
         for (int i = 0; i < G[u].size(); i++) {
             int eid = G[u][i];
@@ -29,10 +39,13 @@ vector<float> dijkastra(int src) {
                 dist[adj] = dist[u] + W[eid].second;
                 q.push_back(adj);
                 par[adj] = u;
+
+                push_heap(q.begin(), q.end(), comparator);
             }
         }
     }
 
+    return dist;
 }
 
 vector<float> bellmanFord(int src) {
@@ -67,7 +80,7 @@ float **floydWarshall() {
         pair<int, int> p = edges[i];
         int u = p.first;
         int v = p.second;
-        dist[u][v] = dist[v][u] = W[i].second;
+        dist[u][v] = W[i].second;
     }
 
 

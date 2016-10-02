@@ -17,7 +17,9 @@ int main() {
 
     // Input Begin
 
-
+int n;
+    cin>> n;
+    cout << n;
     // Input End
 
 

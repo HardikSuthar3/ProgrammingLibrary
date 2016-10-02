@@ -2,13 +2,17 @@
 
 using namespace std;
 
+#define MOD 1000000009
+
+
 class Node {
  public:
-    int val;
+    long val;
     Node *left;
     Node *right;
     bool visited;
     Node *par;
+
 
     Node(int v) {
         this->val = v;
@@ -16,6 +20,7 @@ class Node {
         this->right = nullptr;
         this->left = nullptr;
         this->visited = false;
+
     }
 };
 
