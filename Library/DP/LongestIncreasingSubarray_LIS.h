@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int LIS() {
@@ -15,15 +16,18 @@ int LIS() {
     // Input End
 
     // Sol Begins
-    int cur_len = 1;
-    int maxlen = 1;
+
+    int *sol = new int[n];
+    sol[0] = 1;
     for (int i = 1; i < n; i++) {
-        if (a[i] > a[i - 1])
-            cur_len++;
-        else
-            cur_len = 1;
-        maxlen = max(maxlen, cur_len);
+        sol[i] = 1;
+        for (int j = 0; j < i; j++) {
+            if (a[j] < a[i] && sol[j] + 1 > sol[i]) {
+                sol[i] = sol[j] + 1;
+            }
+        }
     }
-    cout << maxlen;
+    return *max_element(sol, sol + n);
+
     // Sol Ends
 }
