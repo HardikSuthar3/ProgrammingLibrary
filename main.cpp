@@ -2,9 +2,7 @@
     auto buff = std::cin.rdbuf();
     std::cin.rdbuf(in.rdbuf());*/
 #include <bits/stdc++.h>
-
 using namespace std;
-
 int main() {
     freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
     freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/output.txt", "w", stdout);
