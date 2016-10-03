@@ -31,9 +31,10 @@ int _01KnapSack() {
         for (int j = 0; j <= W; j++) {
             if (i == 0 || j == 0) {
                 t[i][j] = 0;
-            }
-            else {
-                t[i][j] = max(t[i - 1][j], t[i - 1][j - weight[i]] + value[i]);
+            } else if (weight[i - 1] <= W) {
+                t[i][j] = max(t[i - 1][j], t[i - 1][j - weight[i]] + value[i - 1]);
+            } else {
+                t[i][j] = t[i - 1][j];
             }
         }
     }
