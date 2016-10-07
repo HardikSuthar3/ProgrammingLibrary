@@ -1,13 +1,7 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
-
-
-// Change Default Input as file
-
-/*    ifstream cin("/HSData/Data/IITM/workspace/CLion/ProblemsImplementation/output.txt");
-    std::streambuf *buf = std::cin.rdbuf();
-    std::cin.rdbuf(cin.rdbuf());*/
 
 int prime(long n) {
     if (n < 2)
@@ -35,11 +29,6 @@ int prime(long n) {
     return count;
 }
 
-
-/// Split the String
-/// \param s : Input String
-/// \param delim: Delimeter
-/// \return : Vector of String separated by delimenter
 vector<string> split(const string &s, char delim) {
     vector<string> elems;
     stringstream ss(s);
@@ -56,9 +45,37 @@ int Kadane_Algo(int *a, int *start, int *finish, int n) {
     for (int i = 1; i < n; ++i) {
         if (curMax + a[i] > a[i]) {
             curMax = curMax + a[i];
-        }
-        else {
+        } else {
             curMax = a[i];
         }
     }
+}
+
+#define MOD 1000000007
+
+inline void add(int &a, int b) {
+    a += b;
+    if (a >= MOD) {
+        a -= MOD;
+    }
+}
+
+inline int mul(int a, int b) {
+    return (long long) (a * b) % MOD;
+}
+
+inline int power(int a, int b) {
+    int res = 1;
+    while (b > 0) {
+        if (b & 1) {
+            res = mul(res, a);
+        }
+        b >> 1;
+        a = mul(a, a);
+    }
+    return res;
+}
+
+inline int inv(int x) {
+    return power(x, MOD - 2);
 }
