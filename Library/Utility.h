@@ -70,7 +70,7 @@ inline int power(int a, int b) {
         if (b & 1) {
             res = mul(res, a);
         }
-        b >> 1;
+        b = b >> 1;
         a = mul(a, a);
     }
     return res;
