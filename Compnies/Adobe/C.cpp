@@ -2,6 +2,8 @@
 
 using namespace std;
 
+
+
 int C() {
     freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
     int t;

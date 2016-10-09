@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 vector<int> computeLPSArray(string pattern) {
     vector<int> lps(pattern.size());
     lps[0] = 0;
@@ -25,6 +26,10 @@ vector<int> computeLPSArray(string pattern) {
     return lps;
 }
 
+
+/// KMP Algo searches a string pattern in another string.
+/// It takes O(m+n) time
+/// \return index of Matched String
 bool KMP_Search(string text, string pattern) {
 
     auto lps = computeLPSArray(pattern);
@@ -46,17 +51,5 @@ bool KMP_Search(string text, string pattern) {
     } else {
         return false;
     }
- // for finding starting index of pattern in text return (i-j)
-}
-
-
-int main() {
-//    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
-
-    auto lps = computeLPSArray("abcdabc");
-    for (auto item:lps) {
-        cout << item << " ";
-    }
-
-    return 0;
+    // for finding starting index of pattern in text return (i-j)
 }

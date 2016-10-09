@@ -9,6 +9,7 @@ int A() {
     while (t--) {
 
         // Input Begin
+
         // Input End
 
 

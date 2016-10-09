@@ -38,6 +38,10 @@ vector<string> split(const string &s, char delim) {
     return elems;
 }
 
+
+/// Problemm Defination:  Write an efficient C program to find the sum of contiguous subarray within a one-dimensional
+/// array of numbers which has the largest sum.
+
 int Kadane_Algo(int *a, int *start, int *finish, int n) {
     *finish = -1;
     int curMax = a[0];
