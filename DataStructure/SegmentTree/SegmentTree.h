@@ -102,28 +102,3 @@ vector<int> createSegmentTree(vector<int> &a) {
     return st;
 }
 
-
-int main() {
-    freopen("/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/input.txt", "r", stdin);
-
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-
-    auto st = createSegmentTree(a);
-
-    for (auto &item:st) {
-        cout << item << " ";
-    }
-    cout << endl;
-    cout << getSum(st, a.size(), 1, 3) << endl;
-
-    updateValue(a, st, 1, 10);
-
-    cout << getSum(st, a.size(), 1, 3);
-
-    return 0;
-}
