@@ -39,7 +39,6 @@ vector<float> dijkastra(int src) {
                 dist[adj] = dist[u] + W[eid].second;
                 q.push_back(adj);
                 par[adj] = u;
-
                 push_heap(q.begin(), q.end(), comparator);
             }
         }

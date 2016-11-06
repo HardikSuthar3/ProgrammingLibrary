@@ -37,12 +37,12 @@ void LCS() {
     int **LCS = new int *[m + 1];
 
     for (int i = 0; i <= m; i++) {
-        LCS[i] = new int[n];
+        LCS[i] = new int[n+1];
         for (int j = 0; j <= n; j++) {
             if (i == 0 || j == 0) {
                 LCS[i][j] = 0;
             }
-            else if (first[i] == second[j]) {
+            else if (first[i-1] == second[j-1]) {
                 LCS[i][j] = 1 + LCS[i - 1][j - 1];
             }
             else {
