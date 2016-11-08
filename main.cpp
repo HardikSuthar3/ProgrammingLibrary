@@ -1,10 +1,8 @@
-#include<bits/stdc++.h>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<int> dist(100, 0);
-
+vector<int> G[100];
 
 int main() {
-    return 0;
+  return 0;
 }
