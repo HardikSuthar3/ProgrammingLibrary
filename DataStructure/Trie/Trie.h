@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 class TrieNode {
@@ -83,26 +83,4 @@ void deleteKey(TrieNode *curNode, string key) {
    if (key.length() > 0) {
       deleteKey_util(curNode, key, 0);
    }
-}
-
-int main() {
-   string keys[8] = {"she", "sells", "sea", "shore", "the", "by", "sheer"};
-   root = new TrieNode();
-   for (int i = 0; i < 8; i++) {
-      insertKey(root, keys[i]);
-   }
-
-   map<bool, string> op;
-   op.insert(make_pair(false, "Not present in trie"));
-   op.insert(make_pair(true, "Present in trie"));
-
-   deleteKey(root, "sea");
-
-   cout << op[search(root, "sea")] << endl;
-
-   /*string s[4] = {"the", "these", "their", "thaw"};
-   for (int i = 0; i < 4; i++) {
-      cout << keys[i] << " " << op[search(root, keys[i])] << endl;
-   }*/
-   return 0;
 }
