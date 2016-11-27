@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+
 using namespace std;
 
 class TrieNode {
@@ -63,7 +64,6 @@ bool deleteKey_util(TrieNode *curNode, string key, int level) {
    } else { // Recursive Case
 
       char ch = key[level];
-
       if (deleteKey_util(curNode->adj[ch], key, level + 1)) {
          // Last Node Marked, delete it
 
@@ -74,7 +74,6 @@ bool deleteKey_util(TrieNode *curNode, string key, int level) {
          curNode->adj.erase(it);
          return (!curNode->isLeaf && curNode->adj.size() == 0);
       }
-
    }
    return false;
 }
