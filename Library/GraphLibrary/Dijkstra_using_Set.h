@@ -99,7 +99,7 @@ void PrintGraph() {
     }
 }
 
-int main() {
+int main2() {
     int t;
     cin >> t;
     while (t--) {
