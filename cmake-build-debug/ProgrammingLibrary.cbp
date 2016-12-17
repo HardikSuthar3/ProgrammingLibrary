@@ -80,12 +80,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/DataStructure/Trie/Trie.h">
-			<Option target="ProgrammingLibrary"/>
-		</Unit>
-		<Unit filename="/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/STRING/StringPermutaitons.h">
-			<Option target="ProgrammingLibrary"/>
-		</Unit>
 		<Unit filename="/HSData/Data/IITM/workspace/CLion/ProgrammingLibrary/main.cpp">
 			<Option target="ProgrammingLibrary"/>
 		</Unit>

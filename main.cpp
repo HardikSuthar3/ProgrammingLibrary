@@ -1,117 +1,114 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
-#define  MAX 1000000000
-
-vector<int> G[3001];
+vector<int> G[100];
 vector<pair<int, pair<int, int>>> edges;
-vector<bool> used(3001, false);
-int V = 10;
+vector<int> par(100);
+vector<bool> used(100);
+int V;
+
+int find(int x) {
+    if(par[x] == x) {
+        return x;
+    } else {
+        return (par[x] = find(par[x]));
+    }
+}
+
+void Union(int x, int y) {
+    int xpar = find(x);
+    int ypar = find(y);
+    par[y] = xpar;
+}
 
 void MakeGraph(int n, int m) {
     V = n;
+    for(int i = 0; i <= V; i++) {
+        par[i] = i;
+    }
     fill(used.begin(), used.begin() + V, false);
-
-    for (int i = 0; i < m; i++) {
-        int x, y, w;
-        cin >> x >> y >> w;
-        auto p = make_pair(x, y);
-        auto item = make_pair(w, p);
-        edges.push_back(item);
-        G[x].push_back(i);
-        G[y].push_back(i);
+    for(int i = 0; i < m; i++) {
+        int u, v, w;
+        cin >> u >> v >> w;
+        auto edge = make_pair(w, make_pair(u, v));
+        edges.push_back(edge);
+        G[u].push_back(i);
+        G[v].push_back(i);
     }
 }
 
-void dijkstra(int s) {
-    vector<long> dist(V + 1, INT_MAX);
-    dist[s] = 0;
-    set<pair<long, int>> q;
-    q.insert(make_pair(dist[s], s));
-
-    while (!q.empty()) {
-        auto it = *(q.begin());
-        int u = it.second;
-        q.erase(q.begin());
-
-        if (used[u]) {
-            continue;
-        }
+void BFS(int s) {
+    vector<int> bfsOrder;
+    queue<int> q;
+    q.push(s);
+    while(!q.empty()) {
+        int u = q.front();
+        bfsOrder.push_back(u);
+        q.pop();
         used[u] = true;
-        for (int i = 0; i < G[u].size(); i++) {
+        for(int i = 0; i < G[u].size(); i++) {
             int E = G[u][i];
-            auto item = edges[E];
-            auto p = item.second;
-
-            int v = p.first ^p.second ^u;
-            if (v == 4) {
-                int t = 0;
-            }
-
-            if (dist[v] > dist[u] + item.first) {
-                auto tmp = pair<int, int>(dist[v], v);
-                q.erase(tmp);
-                dist[v] = dist[u] + item.first;
-
-                tmp.first = dist[v];
-                q.insert(tmp);
+            auto edge = edges[E];
+            int v = edge.second.first ^edge.second.second ^u;
+            if(!used[v]) {
+                q.push(v);
             }
         }
     }
-
-    for (int i = 1; i <= V; i++) {
-        if (i == s) {
-            continue;
-        }
-        if (dist[i] == INT_MAX) {
-            cout << -1 << " ";
-        } else {
-            cout << dist[i] << " ";
-        }
+    for(auto &item : bfsOrder) {
+        cout << item << " ";
     }
 }
 
-void clearGraph() {
-    fill(used.begin(), used.begin() + V + 1, false);
-    for (int i = 0; i <= V; i++) {
-        G[i].clear();
+void DFS_util(int s, vector<int> &dfsOrder) {
+    if(used[s]) {
+        return;
     }
-    edges.clear();
+    used[s] = true;
+    dfsOrder.push_back(s);
+    for(int i = 0; i < G[s].size(); i++) {
+        int E = G[s][i];
+        auto item = edges[E];
+        int v = item.second.first ^item.second.second ^s;
+        DFS_util(v, dfsOrder);
+    }
 }
 
-void PrintGraph() {
-    cout << "Nodes" << endl;
-    for (int i = 0; i <= V; i++) {
-        cout << i << " : ";
-        for (int j = 0; j < G[i].size(); j++) {
-            int eid = G[i][j];
-            auto x = edges[eid].second;
-            int adj = x.first ^x.second ^i;
-            cout << adj << " ";
+void DFS(int s) {
+    vector<int> dfsOrder;
+    for(int i = 0; i < V; i++) {
+        if(!used[i]) {
+            DFS_util(i, dfsOrder);
         }
-        cout << endl;
     }
-    cout << endl << endl;
-    cout << "Edges" << endl;
-    for (int i = 0; i < edges.size(); i++) {
-        cout << edges[i].second.first << " " << edges[i].second.second << ": " << edges[i].first << endl;
+    for(auto &&item : dfsOrder) {
+        cout << item << " ";
     }
+}
+
+void top_util(int s, vector<int> &topOrder) {
+    if(used[s]) {
+        return;
+    }
+    used[s] = true;
+    for(int i = 0; i < G[s].size(); i++) {
+        top_util(s, topOrder);
+    }
+    topOrder.push_back(s);
+}
+
+void topologicalSort() {
+    vector<int> topOrder;
+    for(int i = 0; i < V; i++) {
+        if(!used[i]) {
+            top_util(i, topOrder);
+        }
+    }
+    reverse(topOrder.begin(), topOrder.end());
 }
 
 int main() {
-    int t;
-    cin >> t;
-    while (t--) {
-        int n, m;
-        cin >> n >> m;
-        MakeGraph(n, m);
-        int s;
-        std::cin >> s;
-        dijkstra(s);
-        cout << endl;
-        clearGraph();
-    }
+    int n;
+    n = 1e3;
+    cout << n << endl;
     return 0;
 }
-

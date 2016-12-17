@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 vector<int> computeLPSArray(string pattern) {
     vector<int> lps(pattern.size());
     lps[0] = 0;
@@ -25,7 +24,6 @@ vector<int> computeLPSArray(string pattern) {
     }
     return lps;
 }
-
 
 /// KMP Algo searches a string pattern in another string.
 /// It takes O(m+n) time
