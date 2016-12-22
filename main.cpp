@@ -2,12 +2,18 @@
 using namespace std;
 
 int main() {
-    int a, n, k;
-    cin >> a >> n >> k;
-    int b = a;
-    for(int i = 1; i <= k; ++i) {
-        cout << b % (n + 1) << " ";
-        b = b / (n + 1);
+    set<int> a, b;
+    for(int i = 0; i < 10; ++i) {
+        a.insert(i + 1);
+    }
+    for(int i = 5; i < 20; ++i) {
+        b.insert(i);
+    }
+    vector<int> result(max(a.size(), b.size()));
+    auto it = set_intersection(a.begin(), a.end(), b.begin(), b.end(), result.begin());
+    cout << distance(result.begin(), it) << " " << *it << endl;
+    for(auto iter = result.begin(); iter != it; ++iter) {
+        cout << *iter << " ";
     }
     return 0;
 }
