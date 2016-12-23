@@ -2,18 +2,20 @@
 using namespace std;
 
 int main() {
-    set<int> a, b;
-    for(int i = 0; i < 10; ++i) {
-        a.insert(i + 1);
+    string str;
+    getline(cin, str);
+    reverse(str.begin(), str.end());
+    vector<int> res(str.length(), 0);
+    for(int i = 0; i < str.length(); i++) {
+        if((str[i] - '0') % 2 == 0) {
+            res[i] = res[i - 1] + 1;
+        } else {
+            res[i] = res[i - 1];
+        }
     }
-    for(int i = 5; i < 20; ++i) {
-        b.insert(i);
-    }
-    vector<int> result(max(a.size(), b.size()));
-    auto it = set_intersection(a.begin(), a.end(), b.begin(), b.end(), result.begin());
-    cout << distance(result.begin(), it) << " " << *it << endl;
-    for(auto iter = result.begin(); iter != it; ++iter) {
-        cout << *iter << " ";
+    reverse(res.begin(), res.end());
+    for(auto &item: res) {
+        cout << item << " ";
     }
     return 0;
 }
