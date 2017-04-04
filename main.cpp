@@ -1,33 +1,49 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
-bool isPrime(int x) {
-    if(x <= 2) {
+double P(string str) {
+    if (str.size() == 0)
+        return 0;
+
+    double val = 0;
+    for (int i = 0; i < str.length(); i++) {
+        int a = str[i] - 96;
+        val += a * pow(2, -i);
+    }
+
+}
+
+bool mycompare(pair<string, double> a, pair<string, double> b) {
+    if (a.second - b.second > (double) 0.0) {
+        return false;
+    } else if (a.second - b.second < (double) 0.0) {
         return true;
+    } else {
+        return a.first >= b.first;
     }
-    for(int i = 2; i <= (int)sqrt(x); i++) {
-        if(x % i == 0) {
-            return false;
-        }
-    }
-    return true;
 }
 
 int main() {
-    int n;
-    cin >> n;
-    vector<int> numbers(n + 1);
-    numbers[0] = 0;
-    for(int i = 1; i < n; i++) {
-        int val;
-        cin >> val;
-        numbers[i] = numbers[i - 1] + val;
+
+    string str;
+    getline(cin, str);
+    map<double, string> inputs;
+    for (int i = 0; i < str.length(); i++) {
+        string left = str.substr(0, i + 1);
+        string right = str.substr(i + 1);
+        string newStr = right + left;
+
+        inputs.insert(make_pair(P(newStr), newStr));
     }
 
-    for(int window = n - 1; window >= 0; window--) {
-        if(isPrime(window)) {
-            break;
-        }
+    auto item = max_element(inputs.begin(), inputs.end());
+
+    /*for (auto &&item1  : inputs) {
+        cout << item1.first << " " << item1.second << endl;
     }
+
+    cout << endl << endl;*/
+    cout << item->second;
     return 0;
 }
