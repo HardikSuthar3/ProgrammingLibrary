@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/hardik/CLionProjects/ProgrammingLibrary/main.cpp
+C:/Users/hasuthar/CLionProjects/ProgrammingLibrary/main.cpp
 bits/stdc++.h
 -
 

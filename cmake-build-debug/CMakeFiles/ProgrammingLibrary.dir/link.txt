@@ -1,1 +1,3 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -std=c++14 -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/ProgrammingLibrary.dir/main.cpp.o  -o ProgrammingLibrary 
+"C:\Program Files\JetBrains\CLion 2017.2\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\ProgrammingLibrary.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\ProgrammingLibrary.dir/objects.a @CMakeFiles\ProgrammingLibrary.dir\objects1.rsp
+C:\MinGW\bin\g++.exe  -std=c++14 -g   -Wl,--whole-archive CMakeFiles\ProgrammingLibrary.dir/objects.a -Wl,--no-whole-archive  -o ProgrammingLibrary.exe -Wl,--out-implib,libProgrammingLibrary.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ProgrammingLibrary.dir\linklibs.rsp
