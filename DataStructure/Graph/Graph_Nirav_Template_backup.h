@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 // Graph Structure
 int V, E, root;
 vector<int> G[1001];
@@ -98,7 +97,6 @@ void Union(int x, int y) {
     par[yp] = xp;
 }
 
-
 // Operations
 vector<int> dfs(int v) {
     static vector<int> path;
@@ -184,7 +182,6 @@ vector<int> shortestPathBFS(int r, int to) {
     return res;
 }
 
-
 void topologicalDfs(int v, vector<int> &topst) {
     if (used[v]) {
         return;
@@ -206,6 +203,7 @@ void topologicalDfs(int v, vector<int> &topst) {
 
     return;
 }
+
 vector<int> topologicalSort(int r) {
     vector<int> topOrder;
     for (int i = 0; i < V; i++) {
@@ -216,7 +214,6 @@ vector<int> topologicalSort(int r) {
     reverse(topOrder.begin(), topOrder.end());
     return topOrder;
 }
-
 
 bool isCycle() {
     UFinit(V);
@@ -293,7 +290,6 @@ vector<int> primMst(int r) {
 void krushkalsMst() {
     function<bool(pair<int, float> &, pair<int, float> &)>
             compare([](pair<int, float> &x, pair<int, float> &y) -> bool { return (x.second < y.second); });
-
 
     UFinit(V);
 
@@ -380,7 +376,6 @@ vector<float> bellmanFord(int src) {
     return dist;
 }
 
-
 //All Pair shortest Path
 float **floydWarshall() {
     float **dist = new float *[V];
@@ -396,7 +391,6 @@ float **floydWarshall() {
         dist[u][v] = dist[v][u] = W[i].second;
     }
 
-
     for (int u = 0; u < V; u++) {
         for (int v = 0; v < V; v++) {
             for (int k = 0; k < V; k++) {
@@ -408,7 +402,6 @@ float **floydWarshall() {
     }
     return dist;
 }
-
 
 vector<int> connectedComponents() {
     vector<int> top = topologicalSort(0);
@@ -424,7 +417,6 @@ vector<int> connectedComponents() {
     }
     return comp;
 }
-
 
 void eularPath() {
     bool flag = true;
