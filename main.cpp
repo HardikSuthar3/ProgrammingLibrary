@@ -19,26 +19,25 @@ void makeGraph(int V, int E) {
     for (int i = 0; i < E; ++i) {
         int u, v, w;
 
-/*      // Weighted
+        // Weighted
         cin >> u >> v >> w;
         G[u].push_back((int) i);
-        G[v].push_back((int) i);
+//        G[v].push_back((int) i);
         edgeList.push_back(make_pair(u, v));
         weight.push_back(make_pair(i, w));
-*/
 
-        // Unweighted
+        /*// Unweighted
         cin >> u >> v;
         G[u].push_back(i);
         G[v].push_back(i);
         edgeList.push_back(make_pair(u, v));
-        weight.push_back(make_pair(i, 0));
+        weight.push_back(make_pair(i, 0));*/
     }
 }
 
 void printGraph() {
     cout << "Nodes" << endl;
-    for (int i = 1; i <= noOfVertices; i++) {
+    for (int i = 0; i < noOfVertices; i++) {
         cout << i << " : ";
         for (int j = 0; j < G[i].size(); j++) {
             int edgeId = G[i][j];
@@ -71,6 +70,13 @@ void ClearGraph() {
     }
 
     noOfVertices = noOfEdges = 0;
+}
+
+int getAdjecent(int u, int i) {
+    int edgeId = G[u][i];
+    auto item = edgeList[edgeId];
+    int adjecent = item.first ^item.second ^u;
+    return adjecent;
 }
 // End:- Graph Creation Module
 
@@ -178,17 +184,96 @@ vector<int> shortestPathBFS(int from, int to) {
 }
 
 void topologicalUtil(int from, vector<int> &path) {
+    if (used[from])
+        return;
 
+    used[from] = true;
+    int u = from;
+
+    for (int i = 0; i < G[u].size(); i++) {
+        /*int edgeId = G[u][i];
+        auto item = edgeList[edgeId];
+        int v = item.first ^item.second ^u;*/
+
+        int v = getAdjecent(u, i);
+
+        if (used[v] == false) {
+            topologicalUtil(v, path);
+        }
+    }
+    path.push_back(from);
+    return;
 }
 
-void TopologicalSort(int from) {
+vector<int> TopologicalSort(int from) {
     static vector<int> path;
+    topologicalUtil(from, path);
+    for (int i = 1; i < noOfVertices; i++) {
+        if (used[i] == false) {
+            topologicalUtil(i, path);
+        }
+    }
 
+    reverse(path.begin(), path.end());
+    return path;
 }
+
+vector<pair<int, int>> LongestDistanceInDirectedAcyclicGraph(int start) {
+    auto topologicalPath = TopologicalSort(start);
+    fill(dist.begin(), dist.begin() + noOfVertices + 1, -1);
+    dist[start] = 0;
+    for (auto &u : topologicalPath) {
+        for (int i = 0; i < G[u].size(); i++) {
+            int edgeId = G[u][i];
+            auto item = edgeList[edgeId];
+            int v = item.first ^item.second ^u;
+
+            int w = weight[edgeId].second;
+            dist[v] = max(dist[v], dist[u] + w);
+        }
+    }
+
+    vector<pair<int, int>> result;
+
+    for (auto &u:topologicalPath) {
+        result.push_back(make_pair(u, dist[u]));
+    }
+
+    return result;
+}
+
+
 // End:- Graph Traversal Operations
 
 
 int main() {
-    freopen("D:\\Hardik\\Clion Projects\\ProgrammingLibrary\\input.txt", "r", stdin);
+    freopen("C:\\Users\\hasuthar\\CLionProjects\\ProgrammingLibrary\\input.txt",
+            "r", stdin);
+    freopen("C:\\Users\\hasuthar\\CLionProjects\\ProgrammingLibrary\\output.txt",
+            "w", stdout);
+    int n, m;
+    cin >> n >> m;
+    makeGraph(n, m);
+
+    // Solution begins
+    int start = 1;
+    auto topologicalPath = TopologicalSort(start);
+    fill(dist.begin(), dist.begin() + noOfVertices + 1, -1);
+    dist[start] = 0;
+    for (auto &u : topologicalPath) {
+        for (int i = 0; i < G[u].size(); i++) {
+            int edgeId = G[u][i];
+            auto item = edgeList[edgeId];
+            int v = item.first ^item.second ^u;
+
+            int w = weight[edgeId].second;
+            dist[v] = max(dist[v], dist[u] + w);
+        }
+    }
+
+    for (int u = 0; u < noOfVertices; u++) {
+        cout << u << "->" << dist[u] << endl;
+    }
+
     return 0;
 }
