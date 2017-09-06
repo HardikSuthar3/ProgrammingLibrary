@@ -242,9 +242,25 @@ vector<pair<int, int>> LongestDistanceInDirectedAcyclicGraph(int start) {
     return result;
 }
 
-
 // End:- Graph Traversal Operations
 
+/// Detect Cycle for Undirected Graph
+/// \return Boolean Value
+bool isCyclePresent() {
+    UnioFindInit(noOfVertices);
+
+    for (auto &item:edgeList) {
+        int u = item.first;
+        int v = item.second;
+
+        if (Find(u) == Find(v)) {
+            return true;
+        }
+        Union(u, v);
+    }
+
+    return false;
+}
 
 int main() {
     freopen("C:\\Users\\hasuthar\\CLionProjects\\ProgrammingLibrary\\input.txt",
@@ -255,25 +271,6 @@ int main() {
     cin >> n >> m;
     makeGraph(n, m);
 
-    // Solution begins
-    int start = 1;
-    auto topologicalPath = TopologicalSort(start);
-    fill(dist.begin(), dist.begin() + noOfVertices + 1, -1);
-    dist[start] = 0;
-    for (auto &u : topologicalPath) {
-        for (int i = 0; i < G[u].size(); i++) {
-            int edgeId = G[u][i];
-            auto item = edgeList[edgeId];
-            int v = item.first ^item.second ^u;
-
-            int w = weight[edgeId].second;
-            dist[v] = max(dist[v], dist[u] + w);
-        }
-    }
-
-    for (int u = 0; u < noOfVertices; u++) {
-        cout << u << "->" << dist[u] << endl;
-    }
 
     return 0;
 }
