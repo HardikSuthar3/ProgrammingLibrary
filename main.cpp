@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 #define MAX_Vertice 200
@@ -9,6 +10,8 @@ vector<pair<int, int>> weight;
 vector<int> parent(MAX_Vertice, -1);
 vector<bool> used(MAX_Vertice, false);
 vector<int> dist(MAX_Vertice, -1);
+vector<int> inDegree(MAX_Vertice, 0);
+vector<int> outDegree(MAX_Vertice, 0);
 
 int noOfVertices = 0, noOfEdges = 0;
 
@@ -218,6 +221,52 @@ vector<int> TopologicalSort(int from) {
     return path;
 }
 
+/// Topological sort for Directed Acyclic Graph
+/// \param from Starting Vertice
+/// \return Toplogical ordering
+vector<int> TopologicalSort2(int from) {
+    fill(inDegree.begin(), inDegree.begin() + noOfVertices + 1, 0);
+    queue<int> processed;
+    vector<int> result;
+
+    // Mark the indegree
+    for (int j = 0; j < noOfVertices; j++) {
+        for (int i = 0; i < G[j].size(); i++) {
+            int adj = getAdjecent(j, i);
+            inDegree[adj]++;
+        }
+    }
+
+
+    // Toplogical Order
+
+    int processedCount = 0;
+
+    for (int i = 0; i < noOfVertices; ++i) {
+        if (inDegree[i] == 0) {
+            processed.push(i);
+            used[i] = true;
+        }
+    }
+
+    while (!processed.empty()) {
+        int u = processed.front();
+        processed.pop();
+        result.push_back(u);
+
+        for (int i = 0; i < G[u].size(); i++) {
+            int adj = getAdjecent(u, i);
+            inDegree[adj]--;
+            if (inDegree[adj] == 0 && used[adj] == false) {
+                processed.push(adj);
+                used[adj] = true;
+            }
+        }
+    }
+
+    return result;
+}
+
 vector<pair<int, int>> LongestDistanceInDirectedAcyclicGraph(int start) {
     auto topologicalPath = TopologicalSort(start);
     fill(dist.begin(), dist.begin() + noOfVertices + 1, -1);
@@ -270,7 +319,6 @@ int main() {
     int n, m;
     cin >> n >> m;
     makeGraph(n, m);
-
 
     return 0;
 }
