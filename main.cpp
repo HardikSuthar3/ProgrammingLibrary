@@ -9,7 +9,7 @@ vector<pair<int, int >> edgeList;
 vector<pair<int, int>> weight;
 vector<int> parent(MAX_Vertice, -1);
 vector<bool> used(MAX_Vertice, false);
-vector<int> dist(MAX_Vertice, -1);
+vector<long> dist(MAX_Vertice, -1);
 vector<int> inDegree(MAX_Vertice, 0);
 vector<int> outDegree(MAX_Vertice, 0);
 
@@ -104,7 +104,9 @@ void Union(int x, int y) {
 }
 //End:- Union Find Module Ends
 
-// Graph Traversal Operations
+/*
+ * Graph Traversal Operations
+ */
 vector<int> DFS(int u) {
     static vector<int> path;
     if (used[u]) {
@@ -208,6 +210,9 @@ void topologicalUtil(int from, vector<int> &path) {
     return;
 }
 
+/*
+ * TOPOLOGICAL SORTING
+ */
 vector<int> TopologicalSort(int from) {
     static vector<int> path;
     topologicalUtil(from, path);
@@ -221,9 +226,7 @@ vector<int> TopologicalSort(int from) {
     return path;
 }
 
-/// Topological sort for Directed Acyclic Graph
-/// \param from Starting Vertice
-/// \return Toplogical ordering
+// Kahn's Algorithm for Topological Sorting
 vector<int> TopologicalSort2(int from) {
     fill(inDegree.begin(), inDegree.begin() + noOfVertices + 1, 0);
     queue<int> processed;
@@ -291,10 +294,10 @@ vector<pair<int, int>> LongestDistanceInDirectedAcyclicGraph(int start) {
     return result;
 }
 
-// End:- Graph Traversal Operations
-
-/// Detect Cycle for Undirected Graph
-/// \return Boolean Value
+/*
+ * GRAPH CYCLE
+ */
+// Detects cycle in undirectd graph
 bool isCyclePresent() {
     UnioFindInit(noOfVertices);
 
@@ -309,6 +312,89 @@ bool isCyclePresent() {
     }
 
     return false;
+}
+
+// Cycle in directed graph
+bool cycleUtil(int start) {
+    if (used[start]) {
+        return true;
+    }
+    used[start] = true;
+    int u = start;
+    for (int i = 0; i < G[u].size(); i++) {
+        int edgeId = G[u][i];
+        auto p = edgeList[edgeId];
+        int v = u ^p.first ^p.second;
+        cycleUtil(v);
+    }
+    return false;
+}
+
+bool isCycleInDirectedGraph() {
+}
+
+//Assign directions to edges so that the directed graph remains acyclic
+void convertUndirectedToDirectedGraph(vector<pair<int, int>> undirectedEdgeList) {
+    auto topologicalOrder = TopologicalSort(0);
+    for (int i = 0; i < undirectedEdgeList.size(); ++i) {
+        auto item = undirectedEdgeList[i];
+        int from, to;
+        for (auto &node :topologicalOrder) {
+            if (node == item.first) {
+                from = item.first;
+                to = item.second;
+                break;
+            } else if (node == item.second) {
+                from = item.second;
+                to = item.first;
+                break;
+            }
+        }
+        // Insert Edge in edgeList
+        edgeList.push_back(make_pair(from, to));
+        G[from].push_back(edgeList.size() - 1);
+    }
+}
+
+/*
+ * MINIMUM SPANNING TREE
+ */
+int getMinKey() {
+    long curDist = LONG_MAX;
+    int ind;
+    for (int i = 0; i < noOfVertices; i++) {
+        if (used[i] == false && dist[i] < curDist) {
+            ind = i;
+            curDist = dist[i];
+        }
+    }
+    return ind;
+}
+
+vector<int> primsAlgorithmForMST(int start) {
+    vector<int> spanningTree;
+    fill(dist.begin(), dist.begin() + noOfVertices + 1, LONG_MAX);
+    fill(used.begin(), used.begin() + noOfVertices + 1, false);
+    dist[start] = 0;
+
+    while (spanningTree.size() < noOfVertices) {
+        int nextVertice = getMinKey();
+        used[nextVertice] = true;
+        spanningTree.push_back(nextVertice);
+
+        int u = nextVertice;
+        for (int i = 0; i < G[u].size(); i++) {
+            int edgeId = G[u][i];
+            auto item = edgeList[edgeId];
+            int v = u ^item.first ^item.second;
+
+            int w = weight[edgeId].second;
+            if (dist[v] > (dist[u] + w)) {
+                dist[v] = w;
+            }
+        }
+    }
+    return spanningTree;
 }
 
 int main() {
