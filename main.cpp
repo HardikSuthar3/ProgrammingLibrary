@@ -2,31 +2,23 @@
 
 using namespace std;
 
+long dp[100][100];
+
 int main()
 {
-    freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\input.txt", "r", stdin);
+    // freopen("D:\\OneDrive-Microsoft\\Development\\C++\\ProgrammingLibrary\\input.txt", "r", stdin);
     // freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\output.txt", "w", stdout);
 
-    vector<int> num;
+    for (size_t i = 0; i < 100; i++)
+    {
+        for (size_t j = 0; j < 10; j++)
+        {
+            dp[i][j] = -1;
+        }
+    }
 
     //Reading input
-    for (size_t i = 0; i < 10; i++)
-    {
-        num.push_back(rand() % 100);
-    }
-
-    cout << "Before Sort" << endl;
-    for (auto &&i : num)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-    cout << "After Sort" << endl;
-    sort(num.begin(), num.end(), std::less<int>());
-    for (auto &&i : num)
-    {
-        cout << i << " ";
-    }
-
+    int n, k;
+    cin >> n >> k;
     return 0;
 }
