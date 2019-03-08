@@ -2,23 +2,37 @@
 
 using namespace std;
 
-long dp[100][100];
+long long dp[1000];
+
+long long fun(int n)
+{
+    if (n <= 0)
+    {
+        return 0;
+    }
+
+    if (n <= 2)
+    {
+        dp[n] = n;
+    }
+
+    if (dp[n] > 0)
+    {
+        return dp[n];
+    }
+    return dp[n] = dp[n - 1] + dp[n - 2];
+}
 
 int main()
 {
-    // freopen("D:\\OneDrive-Microsoft\\Development\\C++\\ProgrammingLibrary\\input.txt", "r", stdin);
-    // freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\output.txt", "w", stdout);
-
-    for (size_t i = 0; i < 100; i++)
-    {
-        for (size_t j = 0; j < 10; j++)
-        {
-            dp[i][j] = -1;
-        }
-    }
+    auto in = freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\input.txt", "r", stdin);
+    auto out = freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\output.txt", "w", stdout);
 
     //Reading input
-    int n, k;
-    cin >> n >> k;
+    for (size_t i = 1; i <= 10; i++)
+    {
+        cout << fun(i) << endl;
+    }
+
     return 0;
 }
