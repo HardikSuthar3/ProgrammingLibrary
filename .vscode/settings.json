@@ -2,7 +2,8 @@
     "files.associations": {
         "*.cpp": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "iostream": "cpp"
     },
     "python.linting.pylintEnabled": true,
     "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\py36\\python.exe"
