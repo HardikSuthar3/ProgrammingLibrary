@@ -4,29 +4,44 @@ using namespace std;
 
 long long dp[1000];
 
-long long fun(int n)
-{
-    if (n <= 0)
-    {
-        return 0;
-    }
-
-    if (n <= 2)
-    {
-        dp[n] = n;
-    }
-
-    if (dp[n] > 0)
-    {
-        return dp[n];
-    }
-    return dp[n] = dp[n - 1] + dp[n - 2];
-}
-
+// Graph Structure
 int V, E, root;
 vector<int> G[100];
 vector<pair<int, int>> edges;
 vector<pair<int, float>> W;
+//End Graph Structure
+
+void MakeGraph(int n, int m)
+{
+    V = n;
+    E = m;
+
+    for (int i = 0; i < m; i++)
+    {
+        int a, b, c;
+        cin >> a >> b >> c;
+        G[a].push_back(i);
+        edges.push_back(make_pair(a, b));
+        W.push_back(make_pair(i, c));
+    }
+}
+
+void PrintGraph()
+{
+    int n = V;
+    int m = edges.size();
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < G[i].size(); j++)
+        {
+            auto tmp = G[i][j];
+            auto u = edges[tmp].first;
+            auto v = edges[tmp].second;
+            auto w = W[tmp].second;
+        }
+    }
+}
 
 int main()
 {
