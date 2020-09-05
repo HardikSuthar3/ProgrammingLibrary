@@ -2,5 +2,5 @@
 using namespace std;
 int main()
 {
-    vector<int> number;
+    cout << "Hardik" << endl;
 }

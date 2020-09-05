@@ -10,8 +10,6 @@
             "intelliSenseMode": "${default}",
             "browse": {
                 "path": [
-                    "/usr/local/include",
-                    "/Library/Developer/CommandLineTools/usr/include/c++/v1/",
                     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/bits/",
                     "${workspaceRoot}"
                 ],
@@ -24,7 +22,7 @@
             ],
             "cStandard": "c18",
             "cppStandard": "c++17",
-            "compilerPath": "/usr/bin/g++",
+            "compilerPath": "/usr/bin/clang++",
             "compilerArgs": [
                 "-std=c++17"
             ]
