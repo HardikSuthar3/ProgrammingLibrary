@@ -4,32 +4,36 @@ using namespace std;
 
 int main()
 {
+
+    //freopen("/Users/hardik/HData/Development/CPP/ProgrammingLibrary/input.txt", "r", stdin);
+
     //Input Variable Declaration
     int n;
-    vector<int> ele;
-
+    vector<string> names;
     cin >> n;
-    for (int i = 0; i < n; i++)
+    string tmp2;
+    getline(std::cin, tmp2);
+    for (size_t i = 0; i < n; i++)
     {
-        auto tmp = rand() % 29;
-        ele.push_back(tmp);
+        string tmp;
+        std::getline(std::cin, tmp);
+        names.push_back(tmp);
+    }
+    cout << endl;
+    // Logic
+
+    for (size_t i = 0; i < n; i++)
+    {
+        int count = 0;
+        for (size_t j = 0; j < i; j++)
+        {
+            if (std::lexicographical_compare(names[j].begin(), names[j].end(), names[i].begin(), names[i].end()))
+            {
+                count++;
+            }
+        }
+        cout << count << endl;
     }
 
-    for (auto &&i : ele)
-    {
-        cout << i << " ";
-    }
-    cout << endl
-         << endl;
-
-    // Logic Section
-    sort(ele.begin(), ele.end());
-
-    for (auto &&i : ele)
-    {
-        cout << i << " ";
-    }
-    cout << endl
-         << endl;
     // Output Section
 }
