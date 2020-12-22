@@ -1,55 +1,75 @@
 #include "bits/stdc++.h"
+
 using namespace std;
 
-int partition(vector<int> &a, int start, int end)
+long long dp[1000];
+
+// Graph Structure
+int V, E, root;
+vector<int> G[100];
+vector<pair<int, int>> edges;
+vector<pair<int, float>> W;
+//End Graph Structure
+
+void MakeGraph(int n, int m)
 {
-    int piv;
-    piv = a[start];
-    int i = start + 1;
-    for (int j = start + 1; j <= end; j++)
+    V = n;
+    E = m;
+
+    for (int i = 0; i < m; i++)
     {
-        if (a[j] < piv)
-        {
-            swap(a[i], a[j]);
-            i++;
-        }
+        int a, b, c;
+        cin >> a >> b >> c;
+        G[a].push_back(i);
+        edges.push_back(make_pair(a, b));
+        W.push_back(make_pair(i, c));
     }
-    swap(a[start], a[i - 1]);
-    return (i - 1);
 }
 
-void qs(vector<int> &a, int start, int end)
+void PrintGraph()
 {
-    if (start >= end || end <= start)
-        return;
-    auto pos = partition(a, start, end);
-    qs(a, start, pos - 1);
-    qs(a, pos + 1, end);
+    int n = V;
+    int m = edges.size();
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < G[i].size(); j++)
+        {
+            auto tmp = G[i][j];
+            auto u = edges[tmp].first;
+            auto v = edges[tmp].second;
+            auto w = W[tmp].second;
+        }
+    }
 }
 
 int main()
 {
+    // auto in = freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\input.txt", "r", stdin);
+    // auto out = freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\output.txt", "w", stdout);
+
     vector<int> a;
-    for (size_t i = 0; i < 10; i++)
+    for (int i = 0; i < 100; i++)
     {
-        a.push_back(rand() % 93);
+        a.push_back(rand() % 29);
     }
 
-    for (auto &&i : a)
+    cout << "Before Sort" << endl;
+
+    for (auto &item : a)
     {
-        cout << i << " ";
+        cout << item << " ";
     }
+
     cout << endl
+         << endl
+         << "After Sort" << endl
          << endl;
+    sort(a.begin(), a.end(), std::greater<int>());
 
-    qs(a, 0, a.size());
-    cout << endl
-         << endl;
-
-    for (auto &&i : a)
+    for (auto &item : a)
     {
-        cout << i << " ";
+        cout << item << " ";
     }
-
     return 0;
 }
