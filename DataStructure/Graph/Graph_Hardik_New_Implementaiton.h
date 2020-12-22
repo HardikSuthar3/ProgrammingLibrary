@@ -94,7 +94,7 @@ int getAdjecent(int u, int i)
 }
 // End:- Graph Creation Module
 
-// Union Find Module Starts
+// Union Find Module Begin
 void UnioFindInit(int n)
 {
     for (int i = 0; i < n; i++)
