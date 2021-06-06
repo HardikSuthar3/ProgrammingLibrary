@@ -1,1 +1,8 @@
 g++ test.cpp -std=c++17 -o a.out
+
+
+
+References
+1. https://code.visualstudio.com/docs/cpp/config-clang-mac#_debug-helloworldcpp
+
+2. https://code.visualstudio.com/docs/cpp/config-clang-mac 

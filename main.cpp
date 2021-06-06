@@ -45,8 +45,8 @@ void PrintGraph()
 
 int main()
 {
-    // auto in = freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\input.txt", "r", stdin);
-    // auto out = freopen("D:\\OneDrive - Microsoft\\Development\\C++\\ProgrammingLibrary\\output.txt", "w", stdout);
+    // auto in2 = freopen("/Users/hardik/HData/Development/CPP/ProgrammingLibrary/input.txt", "r", stdin);
+    // auto o = freopen("/Users/hardik/HData/Development/CPP/ProgrammingLibrary/output.txt", "r", stdout);
 
     vector<int> a;
     for (int i = 0; i < 100; i++)

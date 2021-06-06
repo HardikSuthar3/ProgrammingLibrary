@@ -1,39 +1,74 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+
+#define MAX (int)1e5
+int a[MAX];
+
+// Index = Root Node
+// N = Total Node
+void Heapify(int index, int n)
+{
+    // Compare current node with parent
+    int parent = (index - 1) / 2;
+    if (a[index] > a[parent])
+        swap(a[index], a[parent]);
+
+    // Repeat for Childs
+    int left = 2 * index + 1;
+    int right = 2 * index + 2;
+    if (left < n)
+        Heapify(left, n);
+
+    if (right < n)
+        Heapify(right, n);
+}
+
+void HeapSort(int root, int n)
+{
+    // 1. Heapify Tree
+    int left = 2 * root + 1;
+    int right = 2 * root + 2;
+    if (left < n)
+        Heapify(left, n);
+
+    if (right < n)
+        Heapify(right, n);
+
+    for (size_t i = 0; i < n - 1; i++)
+    {
+        // 2. Print Root
+        cout << a[root] << " ";
+
+        // 3. Swap Last Element With Root
+        swap(a[root], a[n - i - 1]);
+
+        // 4. Heapify with reduced size (n-i)
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+        if (left < n)
+            Heapify(left, n - i);
+
+        if (right < n)
+            Heapify(right, n - i);
+    }
+
+    // 5. Repeat from Step 2
+}
 
 int main()
 {
-    string input_time;
-    getline(cin, input_time);
+    freopen("t.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
 
-    int hour_time = stoi(input_time.substr(0, 2));
-
-    string time_phase = input_time.substr(input_time.length() - 2, 2);
-    string new_time;
-
-    if (time_phase == "AM")
+    // Read Inputs
+    int n;
+    cin >> n;
+    for (size_t i = 0; i < n; i++)
     {
-        new_time = to_string(hour_time);
-        if (hour_time == 12)
-        {
-            //replace 12 with 00
-            new_time = "00";
-        }
-        else
-        {
-            new_time = "0" + new_time;
-        }
-        new_time.append(input_time.begin() + 2, input_time.end() - 2);
+        cin >> a[i];
     }
-    else
-    {
-        if (hour_time != 12)
-        {
-            hour_time += 12;
-        }
-        new_time = to_string(hour_time);
-        new_time.append(input_time.begin() + 2, input_time.end() - 2);
-    }
-    cout << new_time;
+
+    HeapSort(0, n);
+
+    return 0;
 }
