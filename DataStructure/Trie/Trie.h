@@ -4,7 +4,7 @@ using namespace std;
 
 class TrieNode
 {
-  public:
+public:
     char ch;
     bool isLeaf;
     map<char, TrieNode *> adj;
@@ -86,7 +86,7 @@ bool deleteKey_util(TrieNode *curNode, string key, int level)
 
             auto it = curNode->adj.find(ch);
             delete (it->second);
-            //root->adj.erase(ch);
+            // root->adj.erase(ch);
 
             curNode->adj.erase(it);
             return (!curNode->isLeaf && curNode->adj.size() == 0);
