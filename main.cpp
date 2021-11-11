@@ -9,7 +9,7 @@ int V, E, root;
 vector<int> G[100];
 vector<pair<int, int>> edges;
 vector<pair<int, float>> W;
-//End Graph Structure
+// End Graph Structure
 
 void MakeGraph(int n, int m)
 {
