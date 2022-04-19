@@ -6,31 +6,24 @@ int main()
 {
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
+    vector<int> num;
 
-    int N;
-    cin >> N;
-    vector<int> a(N);
-    // priority_queue<int, vector<int>, std::greater<int>> pq, t_pq;
-    priority_queue<int, vector<int>, std::less<int>> pq, t_pq;
-
-    for (size_t i = 0; i < N; i++)
+    for (int i = 0; i < 10; i++)
     {
-        cin >> a[i];
-        pq.push(a[i]);
+        num.push_back(rand() % 27);
     }
 
-    for (size_t i = 0; i < N; i++)
+    for (auto &&i : num)
     {
-        t_pq.push(a[i]);
+        cout << i << " ";
+    }
 
-        while (!pq.empty() && !t_pq.empty() && (pq.top() == t_pq.top()))
-        {
-            cout << t_pq.top() << " ";
-            pq.pop();
-            t_pq.pop();
-        }
+    sort(num.begin(), num.end());
 
-        cout << endl;
+    cout << endl;
+    for (auto &&i : num)
+    {
+        cout << i << " ";
     }
 
     return 0;
