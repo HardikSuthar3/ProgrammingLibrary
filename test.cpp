@@ -1,30 +1,49 @@
-#include <bits/stdc++.h>
-
+// Find subarray of a vector with length K and given sum S
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+#include <iterator>
+#include <cassert>
 using namespace std;
 
+// Find subarray of a vector with length K and given sum S
+// Time complexity: O(n)
+// Space complexity: O(1)
+vector<int> findSubarray(const vector<int> &v, int K, int S)
+{
+    int n = v.size();
+    int i = 0, j = 0;
+    int sum = 0;
+    while (j < n)
+    {
+        sum += v[j];
+        if (j - i + 1 == K)
+        {
+            if (sum == S)
+                return vector<int>(v.begin() + i, v.begin() + j + 1);
+            sum -= v[i];
+            i++;
+        }
+        j++;
+    }
+    return {};
+}
 int main()
 {
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    vector<int> num;
 
-    for (int i = 0; i < 10; i++)
-    {
-        num.push_back(rand() % 27);
-    }
+    // Read Vector of N integers from stdin
+    int N;
 
-    for (auto &&i : num)
-    {
-        cout << i << " ";
-    }
+    cin >> N;
+    vector<int> v(N);
+    for (int i = 0; i < N; i++)
+        cin >> v[i];
 
-    sort(num.begin(), num.end());
-
-    cout << endl;
-    for (auto &&i : num)
-    {
-        cout << i << " ";
-    }
-
+    int K = 3;
+    int S = 15;
+    auto res = findSubarray(v, K, S);
+    // copy(res.begin(), res.end(), ostream_iterator<int>(cout, " "));
+    cout << res.size() << endl;
     return 0;
 }
