@@ -1,11 +1,25 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-// main function
-
-int main(int argc, char const *argv[])
+// Heapify a subtree rooted with node i
+// which is an index in arr[]. n is size of heap
+void heapify(int arr[], int n)
 {
-    // Read N numbers in a vector
-    return 0;
+    int i = n - 1;
+    int parent = (i - 1) / 2;
+    while (parent >= 0)
+    {
+        if (arr[parent] < arr[i])
+        {
+            swap(arr[parent], arr[i]);
+            i = parent;
+            parent = (i - 1) / 2;
+        }
+        else
+            break;
+    }
+}
+
+int main()
+{
 }
