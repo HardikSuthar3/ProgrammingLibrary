@@ -98,5 +98,10 @@
 			"valarray": "cpp",
 			"variant": "cpp"
 		}
+	},
+	"extensions": {
+		"recommendations": [
+			"github.copilot-chat"
+		]
 	}
 }
